@@ -3,11 +3,12 @@
 <body>
 
 <h1>SafeJS</h1>
+<form id="addtoMonitor" action="/monitor" method="post">
+<label for="brand">Please provide the name of your brand</label>
+<input type="text" name="brand" value="brand"/><br>
 <label for="url">Please provide the url to monitor</label>
-
-
-<input type="url" name="url" id="url" placeholder="https://example.com" pattern="https://.*" size="30" required/>
+<input type="url" name="url" id="url" placeholder="https://example.com" pattern="https://.*" size="30" required/><br>
 <input type="submit" value="Add to monitor" name="submit"/>
-
+</form>
 </body>
 </html>
