@@ -44,7 +44,7 @@ var options = {
           resp.on('end', function(data){
             responseHash = hashHelper.createHash(urlResponse)
             console.log(responseHash)
-            var hashObj = new Hash(
+            var hash = new Hash(
                 {
                   "url" : url,
                   "brand" : req.body.brand,
@@ -52,7 +52,12 @@ var options = {
                   "hash" : responseHash
                   
                 });
-                hashObj.save(function(err){
+            
+              var hashObj = hash.toObject();
+              delete hashObj._id;
+              var query = {"url" : url};
+              var options = {upsert : true};
+                Hash.findOneAndUpdate(query,hashObj,options, function(err){
                     if(err){
                       throw err;
                     }
